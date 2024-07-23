@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Digital Datalake</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+      /* Custom styles */
+      header {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+      button {
+        margin: 10px;
+      }
+      body {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="btn btn-secondary btn-sm float-left" onclick="event.preventDefault(); document.getElementById('home-form').submit();">Home</a>
+      <form id="home-form" action="/home_page" method="GET" style="display: none;">
+        <input type="hidden" name="_method" value="GET">
+      </form>
+      <h1>Datalake</h1>
+    </header>
+    <form method="POST" , action="{{ url_for('remove_user_permission') }}">
+      {% for user in users %}
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="{{ user[0] }}" id="{{ user[0] }}"  name="selected_users">
+        <label class="form-check-label" for="{{ user[0] }}">
+          {{ user[0] }}
+        </label>
+      </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-secondary btn-sm">Submit</button>
+    </form>
+  </body>
+</html>

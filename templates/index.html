@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Digital Datalake</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+      /* Custom styles */
+      header {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+      button {
+        margin: 10px;
+      }
+      body {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="btn btn-secondary btn-sm float-left" onclick="event.preventDefault(); document.getElementById('home-form').submit();">Home</a>
+      <form id="home-form" action="/home_page" method="GET" style="display: none;">
+        <input type="hidden" name="_method" value="GET">
+      </form>
+      <h1>Datalake</h1>
+    </header>
+    <div class="form-group">
+      <a href="{{ url_for('choose_dataform') }}" class="btn btn-secondary btn-lg">Enter Data</a>
+      <a href="{{ url_for('choose') }}" class="btn btn-secondary btn-lg">Display Data</a>
+    </div>
+    <div class="form-group">
+      <a href="{{ url_for('manage_permission') }}" class="btn btn-secondary btn-lg">Manage Permission</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Digital Datalake</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+      /* Custom styles */
+      header {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+      button {
+        margin: 10px;
+      }
+      body {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="btn btn-secondary btn-sm float-left" onclick="event.preventDefault(); document.getElementById('home-form').submit();">Home</a>
+      <form id="home-form" action="/home_page" method="GET" style="display: none;">
+        <input type="hidden" name="_method" value="GET">
+      </form>
+      <h1>Datalake</h1>
+    </header>
+    <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload_file_to_s3') }}">
+      <div class="form-group">
+        <label for="file-input">Upload File:</label>
+        <input type="file" id="file-input" name="file">
+      </div>
+      <button type="submit" class="btn btn-secondary btn-sm">Submit</button>
+    </form>    
+  </body>
+</html>

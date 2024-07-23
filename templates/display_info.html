@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Digital Datalake</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+      /* Custom styles */
+      header {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+      button {
+        margin: 10px;
+      }
+      body {
+        text-align: center;
+      }
+      table {
+        margin: 20px auto;
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+        font-size: 1em;
+        font-family: sans-serif;
+        min-width: 400px;
+      }
+      table tr:nth-child(odd) {
+        background-color: #f2f2f2;
+      }
+      table tr:nth-child(even) {
+        background-color: #fff;
+      }
+      table th {
+        background-color: #333;
+        color: white;
+        text-align: left;
+        padding: 12px;
+      }
+      table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="btn btn-secondary btn-sm float-left" onclick="event.preventDefault(); document.getElementById('home-form').submit();">Home</a>
+      <form id="home-form" action="/home_page" method="GET" style="display: none;">
+        <input type="hidden" name="_method" value="GET">
+      </form>
+      <h1>Datalake</h1>
+      <h4>Showing data of {{ user }}</h4>
+    </header>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Age</th>
+          <th>Hobby</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for result in results %}
+        <tr>
+          <td>{{ result.name }}</td>
+          <td>{{ result.email }}</td>
+          <td>{{ result.age }}</td>
+          <td>{{ result.hobby }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

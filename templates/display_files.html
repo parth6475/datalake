@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Digital Datalake</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+      /* Custom styles */
+      header {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+      button {
+        margin: 10px;
+      }
+      body {
+        text-align: center;
+      }
+      .container {
+        max-width: 2500px; /* set the maximum width of the container element */
+        margin: auto; /* center the container horizontally */
+      }
+      img {
+        max-width: 100%; /* set the maximum width of the images to be equal to the width of the container */
+        max-height: 100%; /* set the maximum height of the images to be equal to the height of the container */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="btn btn-secondary btn-sm float-left" onclick="event.preventDefault(); document.getElementById('home-form').submit();">Home</a>
+      <form id="home-form" action="/home_page" method="GET" style="display: none;">
+        <input type="hidden" name="_method" value="GET">
+      </form>
+      <h1>Datalake</h1>
+    </header>
+    <div class="container">
+      <div class="row">
+        {% for image in images %}
+          <div class="col-md-4">
+            <img src="{{ image }}" class="img-fluid" alt="Responsive image">
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    
+  </body>
+</html>
